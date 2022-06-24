@@ -1,0 +1,30 @@
+.navbar_container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.navbar_container a {
+    outline: none;
+    padding-top: 3px;
+    background: hotpink;
+    color: white;
+    font-size: 18px;
+    height: 30px;
+    width: 90px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 5px 0 0 5px;
+    transition: all 0.1s;
+}
+
+.navbar_container a:focus {
+    background: deeppink;
+    font-weight: bold;
+}
+
+.navbar_container a:hover {
+    background: pink;
+    color: deeppink;
+}

@@ -1,7 +1,7 @@
 .container {
-    width: 1080px;
+    width: 100%;
     min-height: 720px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     padding: 15px 20px;
     box-sizing: border-box;
     background: pink;
@@ -13,6 +13,8 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
+    background: hotpink;
+    border-radius: 5px;
 }
 
 .title {
@@ -63,7 +65,7 @@
     outline: none;
     background: pink;
     font-size: 16px;
-    width: 220px;
+    width: 200px;
     height: 30px;
     border-radius: 5px;
     border: solid 2px white;
@@ -78,11 +80,13 @@
 
 .query_container {
     flex: 0 0 100%;
+    height: 70px;
     display: flex;
     text-align: center;
     margin-bottom: 10px;
     box-sizing: border-box;
     justify-content: space-around;
+    align-items: center;
 }
 
 .query_container input {
@@ -103,7 +107,7 @@
     cursor: pointer;
     flex: 0 0 20%;
     height: 46px;
-    align-self: center;
+    /*align-self: center;*/
     border-radius: 5px;
     background: hotpink;
     border: solid 2px deeppink;
@@ -133,16 +137,16 @@
 
 .cocktail_item {
     margin-top: 20px;
-    /*margin-right: 15px;*/
 }
 
 .name {
     /*margin-bottom: 10px;*/
+    max-width: 200px;
     font-weight: bold;
     font-size: 18px;
     /*color: #484343;*/
-    color: white;
-    background: deeppink;
+    color: deeppink;
+    /*background: deeppink;*/
     border-radius: 5px;
     padding: 3px 5px;
 }
@@ -150,7 +154,7 @@
 .image {
     width: 200px;
     border-radius: 5px;
-    border: solid 2px deeppink;
+    /*border: solid 2px deeppink;*/
 }
 
 .no_results {

@@ -1,0 +1,124 @@
+.container {
+    width: 100%;
+    min-height: 720px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    background: pink;
+    border-radius: 5px;
+}
+
+.list_section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.random_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: -20px;
+    /*margin-bottom: 50px;*/
+}
+
+.random_cocktail_item {
+    flex: 0 0 45%;
+}
+
+.random_cocktail_item:last-child {
+    margin-top: 20px;
+    flex: 0 0 100%;
+}
+
+.random_cocktail_info {
+    flex: 0 0 45%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: hotpink;
+    border-radius: 5px;
+}
+
+.random_cocktail_info div {
+    margin-bottom: 10px;
+    background: deeppink;
+    padding: 5px;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.item {
+    margin-top: 20px;
+}
+
+.image, .random_cocktail_image, .ingredient_image {
+    width: 200px;
+    border-radius: 5px;
+    /*border: solid 2px deeppink;*/
+}
+
+.ingredient_image {
+    filter: drop-shadow(0 0 5px deeppink);
+}
+
+.random_cocktail_image {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.name, .random_cocktail_name, .measure {
+    text-align: center;
+    max-width: 200px;
+    font-weight: bold;
+    font-size: 18px;
+    color: deeppink;
+    border-radius: 5px;
+    padding: 3px 5px;
+    word-wrap: break-word;
+}
+
+.random_cocktail_name {
+    background: none;
+    color: deeppink;
+    max-width: 100%;
+    font-size: 22px;
+}
+
+.measure {
+    font-weight: normal;
+    background: none;
+}
+
+.section_title {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    background: hotpink;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2px 0;
+    text-shadow: 0 0 5px deeppink;
+}
+
+.button {
+    cursor: pointer;
+    display: block;
+
+    margin: 50px auto;
+
+    width: 200px;
+    height: 80px;
+
+    border-radius: 5px;
+    border: solid 3px white;
+    background: hotpink;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.1s all;
+    outline: none;
+}
+
+.button:hover {
+    background: deeppink;
+}

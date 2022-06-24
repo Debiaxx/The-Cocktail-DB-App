@@ -1,11 +1,12 @@
 import s from './CocktailsSearch.module.css';
 import {useEffect} from "react";
 import {Formik} from "formik";
-import SearchForm from "./SearchForm/SearchForm";
-import filterOfFour from "./FilterFunctions/fourFilters";
-import filterOfThree from "./FilterFunctions/threeFilters";
-import filterOfTwo from "./FilterFunctions/twoFilters";
-import filterOfOne from "./FilterFunctions/oneFilter";
+import SearchForm from "../SearchForm/SearchForm";
+import filterOfFour from "../FilterFunctions/fourFilters";
+import filterOfThree from "../FilterFunctions/threeFilters";
+import filterOfTwo from "../FilterFunctions/twoFilters";
+import filterOfOne from "../FilterFunctions/oneFilter";
+import TitleArea from "../SearchForm/TitleArea/TitleArea";
 
 const title_image = "https://images.vexels.com/media/users/3/246333/isolated/lists/9626dce3278f72220ea2736de64e6233-pink-cocktail-color-stroke.png"
 
@@ -73,6 +74,7 @@ const CocktailsSearch = (props) => {
 
     return (
         <div className={s.container}>
+            <TitleArea title_image={title_image}/>
             <Formik
                 initialValues={{query: '', category: '', glass: '', alco: '', ingredients: ''}}
                 onSubmit={onFilterSubmit}>

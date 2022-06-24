@@ -1,4 +1,4 @@
-import s from "../../CocktailsSearch.module.css";
+import s from "../../CocktailsSearch/CocktailsSearch.module.css";
 
 const TitleArea = (props) => {
     return (<div className={s.title_container}>

@@ -1,4 +1,4 @@
-import s from "../../CocktailsSearch.module.css";
+import s from "../../CocktailsSearch/CocktailsSearch.module.css";
 import {Field} from "formik";
 
 const QueryForm = (props) => {
