@@ -22,6 +22,9 @@ export const searchAPI = {
 }
 
 export const lookupAPI = {
+    byFirstLetter(a) {
+        return instance.get(`search.php?f=${a}`)
+    },
     randomCocktail() {
         return instance.get(`random.php`);
     },

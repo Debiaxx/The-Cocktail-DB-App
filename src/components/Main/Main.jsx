@@ -2,6 +2,7 @@ import s from './Main.module.css';
 import TitleArea from "../SearchForm/TitleArea/TitleArea";
 import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
+import AlphabetSearchContainer from "./AlphabetSearch/AlphabetSearchContainer";
 
 const title_image = "https://images.vexels.com/media/users/3/246333/isolated/lists/9626dce3278f72220ea2736de64e6233-pink-cocktail-color-stroke.png"
 
@@ -12,15 +13,19 @@ const Main = (props) => {
         props.getLatestCocktails()
     }, [])
 
-    let popular_cocktails = props.popular_cocktails.map(pc => <div className={s.item} key={pc.idDrink}>
-        <img className={s.image} src={pc.strDrinkThumb} alt=""/>
-        <div className={s.name}>{pc.strDrink}</div>
-    </div>).splice(0, 8);
+    let popular_cocktails = props.popular_cocktails.map(pc => <NavLink to={`/cocktail/${pc.idDrink}`}>
+        <div className={s.item} key={pc.idDrink}>
+            <img className={s.image} src={pc.strDrinkThumb} alt=""/>
+            <div className={s.name}>{pc.strDrink}</div>
+        </div>
+    </NavLink>).splice(0, 8);
 
-    let latest_cocktails = props.latest_cocktails.map(lc => <div className={s.item} key={lc.idDrink}>
-        <img className={s.image} src={lc.strDrinkThumb} alt=""/>
-        <div className={s.name}>{lc.strDrink}</div>
-    </div>).splice(0, 8)
+    let latest_cocktails = props.latest_cocktails.map(lc => <NavLink to={`/cocktail/${lc.idDrink}`}>
+        <div className={s.item} key={lc.idDrink}>
+            <img className={s.image} src={lc.strDrinkThumb} alt=""/>
+            <div className={s.name}>{lc.strDrink}</div>
+        </div>
+    </NavLink>).splice(0, 8)
 
     let onRandomCocktail = () => {
         props.getRandomCocktail();
@@ -33,13 +38,13 @@ const Main = (props) => {
     let measure = [random_drink.strMeasure1, random_drink.strMeasure2, random_drink.strMeasure3, random_drink.strMeasure4, random_drink.strMeasure5, random_drink.strMeasure6, random_drink.strMeasure7, random_drink.strMeasure8, random_drink.strMeasure9, random_drink.strMeasure10, random_drink.strMeasure11, random_drink.strMeasure12, random_drink.strMeasure13, random_drink.strMeasure14, random_drink.strMeasure15].filter(m => m !== null && m != '');
 
     let reciepe_key = Math.floor(Math.random() * 50);
-    console.log(reciepe_key)
+    // console.log(reciepe_key)
 
     let recipe = [];
     for (let i = 0; i < ingredients.length; i++) {
         recipe = [...recipe, {ingredient: ingredients[i], measure: measure[i]}]
     }
-    console.log(recipe)
+    // console.log(recipe)
     recipe = recipe.map(r => <div className={s.item} key={r.ingredient + reciepe_key}>
         <img className={s.ingredient_image} src={`https://www.thecocktaildb.com/images/ingredients/${r.ingredient}.png`}
              alt='🍸'/>
@@ -72,7 +77,6 @@ const Main = (props) => {
                         <div className={s.test}>Category: {random_drink.strCategory}</div>
                         <div className={s.test}>Alcoholic: {random_drink.strAlcoholic}</div>
                         <div className={s.test}>Glass: {random_drink.strGlass}</div>
-                        <div className={s.test}>Glass: {random_drink.strGlass}</div>
                         <div className={s.test}>Instruction: {random_drink.strInstructions}</div>
                     </div>
                     <div className={s.random_cocktail_item}>
@@ -83,7 +87,9 @@ const Main = (props) => {
         </div>
 
         <hr/>
-        <div>by first letter</div>
+        <div>
+            <AlphabetSearchContainer/>
+        </div>
         <hr/>
     </div>)
 }

@@ -7,6 +7,7 @@ import filterOfThree from "../FilterFunctions/threeFilters";
 import filterOfTwo from "../FilterFunctions/twoFilters";
 import filterOfOne from "../FilterFunctions/oneFilter";
 import TitleArea from "../SearchForm/TitleArea/TitleArea";
+import {NavLink} from "react-router-dom";
 
 const title_image = "https://images.vexels.com/media/users/3/246333/isolated/lists/9626dce3278f72220ea2736de64e6233-pink-cocktail-color-stroke.png"
 
@@ -55,10 +56,12 @@ const CocktailsSearch = (props) => {
             query_result.filter(qr => filters_result ? filters_result.some(fr => fr.idDrink === qr.idDrink) : qr) :
             false;
 
-    let cocktails = result ? result.map(r => <div className={s.cocktail_item} key={r.idDrink}>
-        <img className={s.image} src={r.strDrinkThumb} alt={''}/>
-        <div className={s.name}>{r.strDrink}</div>
-    </div>) : <div className={s.no_results}>No results</div>;
+    let cocktails = result ? result.map(r => <NavLink to={`/cocktail/${r.idDrink}`}>
+        <div className={s.cocktail_item} key={r.idDrink}>
+            <img className={s.image} src={r.strDrinkThumb} alt={''}/>
+            <div className={s.name}>{r.strDrink}</div>
+        </div>
+    </NavLink>) : <div className={s.no_results}>No results</div>;
 
     let cocktails_total_count = result ? result.length : '0';
 
