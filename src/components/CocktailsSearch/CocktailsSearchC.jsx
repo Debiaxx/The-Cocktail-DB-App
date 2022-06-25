@@ -4,15 +4,13 @@ import {
     getAlcoholCocktails,
     getCategories,
     getGlasses, getIngredients,
-    getLatestCocktails,
-    getPopularCocktails
 } from "../../redux/listsReducer";
 import {
     cocktailByName,
     filterByAlcohol,
     filterByCategory,
     filterByGlass,
-    filterByIngredients
+    filterByIngredients, setStartResultValue
 } from "../../redux/filterReducer";
 
 let mapStateToProps = (state) => ({
@@ -21,11 +19,7 @@ let mapStateToProps = (state) => ({
     alcoholic_cocktails: state.listsReducer.alcoholic_cocktails,
     glasses: state.listsReducer.glasses,
 
-    by_category: state.filterReducer.byCategory,
-    by_alco: state.filterReducer.byAlcohol,
-    by_glass: state.filterReducer.byGlass,
-    by_ingredients: state.filterReducer.byIngredients,
-    by_query: state.filterReducer.byQuery,
+    result: state.filterReducer.result,
 })
 
 export default connect(mapStateToProps, {
@@ -39,4 +33,6 @@ export default connect(mapStateToProps, {
     filterByGlass,
     filterByIngredients,
     cocktailByName,
+
+    setStartResultValue,
 })(CocktailsSearch);

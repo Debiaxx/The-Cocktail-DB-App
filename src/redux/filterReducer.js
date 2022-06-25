@@ -1,20 +1,14 @@
 import {filterAPI, lookupAPI, searchAPI} from "../dal/api";
 
-const SET_RESULT_BY_CATEGORY = 'SET_RESULT_BY_CATEGORY';
-const SET_RESULT_BY_ALCOHOL = 'SET_RESULT_BY_ALCOHOL';
-const SET_RESULT_BY_GLASS = 'SET_RESULT_BY_GLASS';
-const SET_RESULT_BY_INGREDIENTS = 'SET_RESULT_BY_INGREDIENTS';
-const SET_RESULT_BY_QUERY = 'SET_RESULT_BY_QUERY';
 const SET_RESULT_BY_FIRST_LETTER = 'SET_RESULT_BY_FIRST_LETTER';
 const SET_LETTER = 'SET_LETTER';
 const SET_COCKTAIL_INFO = 'SET_COCKTAIL_INFO';
 
+const SET_RESULT = 'SET_RESULT';
+const SET_START_RESULT_VALUE = 'SET_START_RESULT_VALUE';
+
 let initialState = {
-    byCategory: [],
-    byAlcohol: [],
-    byGlass: [],
-    byIngredients: [],
-    byQuery: [],
+    result: [],
     byFirstLetter: [],
     letter: '',
     cocktail_info: {},
@@ -22,30 +16,16 @@ let initialState = {
 
 let filterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_RESULT_BY_CATEGORY:
+        case SET_RESULT:
             return {
                 ...state,
-                byCategory: action.result,
+                result: Array.isArray(state.result) && state.result.length > 0 ?
+                    state.result.filter(sr => Array.isArray(action.result) && action.result.length > 0 ? action.result.some(ar => ar.idDrink === sr.idDrink) : sr) : Array.isArray(action.result) && action.result.length > 0 ? action.result : [],
             }
-        case SET_RESULT_BY_ALCOHOL:
+        case SET_START_RESULT_VALUE:
             return {
                 ...state,
-                byAlcohol: action.result,
-            }
-        case SET_RESULT_BY_GLASS:
-            return {
-                ...state,
-                byGlass: action.result,
-            }
-        case SET_RESULT_BY_INGREDIENTS:
-            return {
-                ...state,
-                byIngredients: action.result,
-            }
-        case SET_RESULT_BY_QUERY:
-            return {
-                ...state,
-                byQuery: action.result,
+                result: action.result,
             }
         case SET_RESULT_BY_FIRST_LETTER:
             return {
@@ -70,49 +50,51 @@ let filterReducer = (state = initialState, action) => {
 export default filterReducer;
 
 //AC
-export const setResultByCategory = (result) => ({type: SET_RESULT_BY_CATEGORY, result});
-export const setResultByAlcohol = (result) => ({type: SET_RESULT_BY_ALCOHOL, result});
-export const setResultByGlass = (result) => ({type: SET_RESULT_BY_GLASS, result});
-export const setResultByIngredients = (result) => ({type: SET_RESULT_BY_INGREDIENTS, result});
-export const setResultByQuery = (result) => ({type: SET_RESULT_BY_QUERY, result});
 export const setResultByFirstLetter = (result) => ({type: SET_RESULT_BY_FIRST_LETTER, result});
 export const setLetter = (letter) => ({type: SET_LETTER, letter});
 export const setCocktailInfo = (info) => ({type: SET_COCKTAIL_INFO, info});
+
+export const setResult = (result) => ({type: SET_RESULT, result});
+export const setStartResultValue = (result) => ({type: SET_START_RESULT_VALUE, result});
 
 //ThC
 export const filterByCategory = (category) => {
     return (dispatch) => {
         filterAPI.byCategory(category).then(response => {
-            dispatch(setResultByCategory(response.data.drinks))
+            // dispatch(setResultByCategory(response.data.drinks))
+            dispatch(setResult(response.data.drinks))
         })
     }
 }
 export const filterByAlcohol = (alco) => {
     return (dispatch) => {
         filterAPI.byAlcoholic(alco).then(response => {
-            dispatch(setResultByAlcohol(response.data.drinks))
+            // dispatch(setResultByAlcohol(response.data.drinks))
+            dispatch(setResult(response.data.drinks))
         })
     }
 }
 export const filterByGlass = (glass) => {
     return (dispatch) => {
         filterAPI.byGlass(glass).then(response => {
-            dispatch(setResultByGlass(response.data.drinks))
+            // dispatch(setResultByGlass(response.data.drinks))
+            dispatch(setResult(response.data.drinks))
         })
     }
 }
 export const filterByIngredients = (ingredients) => {
     return (dispatch) => {
         filterAPI.byMultiIngredient(ingredients).then(response => {
-            dispatch(setResultByIngredients(response.data.drinks))
+            // dispatch(setResultByIngredients(response.data.drinks))
+            dispatch(setResult(response.data.drinks))
         })
     }
 }
 export const cocktailByName = (query) => {
     return (dispatch) => {
         searchAPI.cocktailByName(query).then(response => {
-            // debugger
-            dispatch(setResultByQuery(response.data.drinks))
+            // dispatch(setResultByQuery(response.data.drinks))
+            dispatch(setResult(response.data.drinks))
         })
     }
 }
