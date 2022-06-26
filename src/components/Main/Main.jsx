@@ -4,9 +4,6 @@ import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import AlphabetSearchContainer from "./AlphabetSearch/AlphabetSearchContainer";
 
-const title_image = "https://images.vexels.com/media/users/3/246333/isolated/lists/9626dce3278f72220ea2736de64e6233-pink-cocktail-color-stroke.png"
-
-
 const Main = (props) => {
     useEffect(() => {
         props.getPopularCocktails()
@@ -53,7 +50,7 @@ const Main = (props) => {
     </div>)
 
     return (<div className={s.container}>
-        <TitleArea title_image={title_image}/>
+        <TitleArea/>
         <hr/>
         <div className={s.section_title}>Popular cocktails</div>
         <div className={s.list_section}>{popular_cocktails}</div>

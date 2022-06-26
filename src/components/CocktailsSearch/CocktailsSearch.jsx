@@ -5,8 +5,6 @@ import SearchForm from "../SearchForm/SearchForm";
 import TitleArea from "../SearchForm/TitleArea/TitleArea";
 import {NavLink} from "react-router-dom";
 
-const title_image = "https://images.vexels.com/media/users/3/246333/isolated/lists/9626dce3278f72220ea2736de64e6233-pink-cocktail-color-stroke.png"
-
 const CocktailsSearch = (props) => {
     useEffect(() => {
         props.getCategories();
@@ -45,11 +43,11 @@ const CocktailsSearch = (props) => {
 
     return (
         <div className={s.container}>
-            <TitleArea title_image={title_image}/>
+            <TitleArea/>
             <Formik
                 initialValues={{query: '', category: '', glass: '', alco: '', ingredients: ''}}
                 onSubmit={onFilterSubmit}>
-                <SearchForm title_image={title_image} categories={categories} glasses={glasses}
+                <SearchForm categories={categories} glasses={glasses}
                             alcoholic_cocktails={alcoholic_cocktails} ingredients={ingredients}/>
             </Formik>
             <div className={s.total_count}>total: {cocktails_total_count}</div>

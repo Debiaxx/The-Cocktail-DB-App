@@ -1,0 +1,19 @@
+.description {
+    background: hotpink;
+    border-radius: 5px;
+    /*color: black;*/
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.description_title {
+    margin-top: 10px;
+    background: hotpink;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

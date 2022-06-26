@@ -4,11 +4,14 @@ const SET_RESULT_BY_FIRST_LETTER = 'SET_RESULT_BY_FIRST_LETTER';
 const SET_LETTER = 'SET_LETTER';
 const SET_COCKTAIL_INFO = 'SET_COCKTAIL_INFO';
 
+const SET_INGREDIENT = 'SET_INGREDIENT';
+
 const SET_RESULT = 'SET_RESULT';
 const SET_START_RESULT_VALUE = 'SET_START_RESULT_VALUE';
 
 let initialState = {
     result: [],
+    ingredient: [],
     byFirstLetter: [],
     letter: '',
     cocktail_info: {},
@@ -42,6 +45,11 @@ let filterReducer = (state = initialState, action) => {
                 ...state,
                 cocktail_info: action.info
             }
+        case SET_INGREDIENT:
+            return {
+                ...state,
+                ingredient: action.ingredient
+            }
         default:
             return state;
     }
@@ -53,6 +61,8 @@ export default filterReducer;
 export const setResultByFirstLetter = (result) => ({type: SET_RESULT_BY_FIRST_LETTER, result});
 export const setLetter = (letter) => ({type: SET_LETTER, letter});
 export const setCocktailInfo = (info) => ({type: SET_COCKTAIL_INFO, info});
+
+export const setIngredient = (ingredient) => ({type: SET_INGREDIENT, ingredient});
 
 export const setResult = (result) => ({type: SET_RESULT, result});
 export const setStartResultValue = (result) => ({type: SET_START_RESULT_VALUE, result});
@@ -110,6 +120,18 @@ export const getCocktailInfoById = (id) => {
     return (dispatch) => {
         lookupAPI.cocktailDetailsById(id).then(respone => {
             dispatch(setCocktailInfo(respone.data.drinks[0]))
+        })
+    }
+}
+export const getIngredientByName = (query) => {
+    return (dispatch) => {
+        searchAPI.ingredientByName(query).then(response => {
+            // debugger
+            if(response.data.ingredients !== null) {
+            dispatch(setIngredient(response.data.ingredients[0]))
+            } else {
+                dispatch(setIngredient([]))
+            }
         })
     }
 }

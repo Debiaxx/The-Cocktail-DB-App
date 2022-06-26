@@ -6,6 +6,7 @@ import NavbarC from "./components/Navbar/NavbarC";
 import AlphabetResultPageContainer
     from "./components/Main/AlphabetSearch/AlphabetResultPage/AlphabetResultPageContainer";
 import ItemPageC from "./components/ItemPage/ItemPageC";
+import IngredientsSearchC from "./components/IngredientsSearch/IngredientsSearchC";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path={'/by-alphabet'} element={<AlphabetResultPageContainer/>}/>
                 <Route path={'/search'} element={<CocktailsSearchC/>}/>
                 <Route path={'/cocktail/:idDrink'} element={<ItemPageC/>}/>
+                <Route path={'/ingredients'} element={<IngredientsSearchC/>}/>
             </Routes>
         </div>
     );
